@@ -1,0 +1,47 @@
+{
+    "project_info": {
+      "project_number": "560467081090",
+      "project_id": "sismosapp-fda41",
+      "storage_bucket": "sismosapp-fda41.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:560467081090:android:d04b296f118b1bb4bb419b",
+          "android_client_info": {
+            "package_name": "io.ionic.starter"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "560467081090-b1r7vre6fe1k83h7i9tlniinrtfrn204.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "io.ionic.starter",
+              "certificate_hash": "2c8ffcef3109f0189058db0529f8eb2ba5758aa9"
+            }
+          },
+          {
+            "client_id": "560467081090-95manltmr0s3vc86dadf2gc2eidc7tps.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyCl31UGlgLuntTtm2aKgoSazDT3vWfHNDU"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "560467081090-95manltmr0s3vc86dadf2gc2eidc7tps.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
