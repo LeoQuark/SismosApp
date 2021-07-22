@@ -26,33 +26,22 @@ const Integrantes = () => {
   const nombres = ["Esteban Moyano", "Leonardo Peña", "Javier Saavedra"];
 
   return (
-    <IonPage>
+    <>
       <IonHeader>
         <IonToolbar color="dark" className="py-2">
           <IonTitle>Integrantes</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        {/*-- List of Text Items --*/}
         <IonList>
-          {/* <IonItem>
-            <IonContent>
-              <IonGrid>
-                <IonRow>
-                  <IonCol>imagen</IonCol>
-                  <IonCol>sa</IonCol>
-                </IonRow>
-              </IonGrid>
-            </IonContent>
-          </IonItem> */}
           {nombres.map((nombre, index) => (
             <IonItem key={index}>
-              <IonLabel>{` ${nombre}`}</IonLabel>
+              <IonLabel className="my-4">{` ${nombre}`}</IonLabel>
             </IonItem>
           ))}
         </IonList>
       </IonContent>
-    </IonPage>
+    </>
   );
 };
 

@@ -1,10 +1,6 @@
 import { useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { IonReactRouter } from "@ionic/react-router";
-import { ellipse, square, triangle } from "ionicons/icons";
-import Tab1 from "./pages/Tab1";
-import Tab2 from "./pages/Tab2";
-import Tab3 from "./pages/Tab3";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -28,7 +24,7 @@ import "./theme/variables.css";
 import { IonApp, IonRouterOutlet } from "@ionic/react";
 
 import UserState from "./components/context/UserState.jsx";
-import UserContext from "./components/context/UserContext.jsx";
+// import UserContext from "./components/context/UserContext.jsx";
 import Auth from "./pages/Auth.jsx";
 import Home from "./pages/Home.jsx";
 
