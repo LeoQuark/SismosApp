@@ -69,6 +69,7 @@ const DetalleSismo = (props) => {
             </IonRow>
             <IonRow>
               <IonCol>{sismo.referencia_geografica}</IonCol>
+
             </IonRow>
           </IonGrid>
         )}
