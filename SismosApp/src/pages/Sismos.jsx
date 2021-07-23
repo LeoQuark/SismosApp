@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { useLocation, Route } from "react-router-dom";
+import { useLocation, Route, useHistory } from "react-router-dom";
 import UserContext from "../components/context/UserContext";
 import axios from "axios";
 import {
@@ -24,6 +24,7 @@ import DetalleSismo from "./DetalleSismo.jsx";
 const API_URL = "http://localhost:4000";
 
 const Sismos = () => {
+  const history = useHistory();
   const [sismos, setSismos] = useState([]);
 
   const getSismos = async () => {
@@ -56,7 +57,7 @@ const Sismos = () => {
         <IonList>
           {sismos
             ? sismos.map((sismo, index) => (
-                <IonItem key={index} href={`/home/sismo/${index}`}>
+                <IonItem key={index} href={`/home/sismos/${sismo.id_sismo}`}>
                   <IonLabel className="my-4">
                     {sismo.referencia_geografica}
                   </IonLabel>

@@ -28,10 +28,8 @@ import Sismos from "./Sismos.jsx";
 import Integrantes from "./Integrantes.jsx";
 import Inicio from "./Inicio.jsx";
 import DetalleSismo from "./DetalleSismo.jsx";
-
 const Home = (props) => {
   const { user } = useContext(UserContext);
-
   return (
     <>
       <IonTabs>
@@ -41,6 +39,7 @@ const Home = (props) => {
           <Route path="/home/sismos/:id" component={DetalleSismo} />
           <Route path="/home/integrantes" component={Integrantes} />
           <Redirect from="/home" to="/home/inicio" exact />
+          {/* <Redirect from="/home/sismos" to="/home/sismos" exact /> */}
         </IonRouterOutlet>
         <IonTabBar slot="bottom" className="py-2">
           <IonTabButton tab="speakers" href="/home/inicio">

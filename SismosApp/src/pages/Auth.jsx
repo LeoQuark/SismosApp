@@ -45,7 +45,6 @@ const Auth = () => {
         setUser(user);
         // history.push("/home");
         history.push("/home");
-        // <Redirect to="home" user={user} />;
       })
       .catch((error) => {
         // Handle Errors here.
