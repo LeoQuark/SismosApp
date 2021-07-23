@@ -56,7 +56,7 @@ const Sismos = () => {
         <IonList>
           {sismos
             ? sismos.map((sismo, index) => (
-                <IonItem key={index} href={`/home/sismo/${index}`}>
+                <IonItem key={index} href={`/home/sismos/${index}`}>
                   <IonLabel className="my-4">
                     {sismo.referencia_geografica}
                   </IonLabel>

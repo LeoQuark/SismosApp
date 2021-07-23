@@ -16,6 +16,8 @@ import {
   IonButton,
 } from "@ionic/react";
 
+import GoogleMaps from "simple-react-google-maps";
+
 const API_URL = "http://localhost:4000";
 
 const DetalleSismo = (props) => {
@@ -41,6 +43,21 @@ const DetalleSismo = (props) => {
       </IonHeader>
       <IonContent>
         <IonGrid>
+          <div className="container">
+            <GoogleMaps
+            apiKey = {"AIzaSyBl32R9o91f8vLaPXdIV1V4sCAdiX0DIcs"}
+              style = {{ height : "400px", width:"300px"}}
+              zoom = {12}
+              center = {{
+                lat: 40.412735,
+                lng: -3.695428
+              }}
+              markers= {{
+                lat: 40.412735,
+                lng: -3.695428
+              }}
+              />
+          </div>
           <IonRow>
             <IonCol>sasa</IonCol>
           </IonRow>
