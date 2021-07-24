@@ -13,9 +13,14 @@ import {
   IonCol,
   IonText,
   IonButton,
+  IonIcon,
+  IonCard,
+  IonCardTitle,
+  IonCardHeader
 } from "@ionic/react";
 
 import UserContext from "../components/context/UserContext";
+import { logoGoogle } from "ionicons/icons";
 
 const Auth = () => {
   const { setUser } = useContext(UserContext);
@@ -60,23 +65,39 @@ const Auth = () => {
   return (
     <IonApp>
       <IonHeader>
-        <IonToolbar color="dark" className="py-3">
+        <IonToolbar color="dark" className="py-3 text-center">
           <IonTitle>Iniciar Sesión</IonTitle>
         </IonToolbar>
       </IonHeader>
+      
       <IonContent>
         <IonGrid>
-          <IonRow>
-            <IonCol>
-              <IonButton color="danger" onClick={() => loginAuth()}>
-                Iniciar sesión con Google
-              </IonButton>
-            </IonCol>
+          <IonCard className="align-center">
+          <IonCardHeader>
+
+              <IonCardTitle className="text-center">
+                Bienvenido
+              </IonCardTitle>
+              <hr className="mx-4" />
+          </IonCardHeader>
+
+          <IonRow className="ion-text-center">
+              <IonCol>
+                <IonButton color="danger" onClick={() => loginAuth()}>
+                  <IonIcon icon={logoGoogle}></IonIcon>
+                    Iniciar sesión con Google
+
+
+                </IonButton>
+              </IonCol>
           </IonRow>
+
+          </IonCard>
         </IonGrid>
       </IonContent>
     </IonApp>
   );
 };
+
 
 export default Auth;

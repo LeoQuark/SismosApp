@@ -1,38 +1,29 @@
-import { useState, useContext, useEffect } from "react";
-import { useLocation, Route, useHistory } from "react-router-dom";
-import UserContext from "../components/context/UserContext";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import {
-  IonApp,
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
-  IonRouterOutlet,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonPage,
-  IonButton,
   IonList,
   IonItem,
   IonLabel,
 } from "@ionic/react";
 
-import DetalleSismo from "./DetalleSismo.jsx";
-
+//url base de la API REST de sismos
 const API_URL = "http://localhost:4000";
 
+//Componente que muestra una lista de los ultimos sismos registrados por la API
 const Sismos = () => {
   const history = useHistory();
   const [sismos, setSismos] = useState([]);
 
+  //Funcion que realiza la peticion a la api y retorna los datos de los ultimos sismos
   const getSismos = async () => {
     await axios.get(`${API_URL}/api/earthquakes`).then(
       (result) => {
         if (result.status === 200) {
-          console.log("si");
-          console.log(result.data.data);
           setSismos(result.data.data);
         }
       },
@@ -55,9 +46,10 @@ const Sismos = () => {
       </IonHeader>
       <IonContent>
         <IonList>
+          {/* Se recorren todos los sismos y se muestran en pantalla */}
           {sismos
             ? sismos.map((sismo, index) => (
-                <IonItem key={index} href={`/home/sismos/${sismo.id_sismo}`}>
+                <IonItem key={index} href={`/home/sismo/${sismo.id_sismo}`}>
                   <IonLabel className="my-4">
                     {sismo.referencia_geografica}
                   </IonLabel>
@@ -66,9 +58,6 @@ const Sismos = () => {
             : "no"}
         </IonList>
       </IonContent>
-      {/* <IonRouterOutlet>
-        <Route path="/home/sismo/:id" component={DetalleSismo} />
-      </IonRouterOutlet> */}
     </>
   );
 };
