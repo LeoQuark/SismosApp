@@ -1,34 +1,31 @@
-import { useState, useContext, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import UserContext from "../components/context/UserContext";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import {
-  IonApp,
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonRouterOutlet,
   IonContent,
   IonGrid,
   IonRow,
   IonCol,
-  IonPage,
-  IonButton,
 } from "@ionic/react";
 
+//Integracion de google maps
 import GoogleMaps from "simple-react-google-maps";
 
+//url base de la API REST
 const API_URL = "http://localhost:4000";
 
+//Componente que muestra la informacion detallada del sismo seleccionado
 const DetalleSismo = (props) => {
   const { id } = useParams();
-
   const [sismo, setSismo] = useState({});
 
+  //Peticion para obtener el sismo seleccionado por medio del ID
   const getSismoById = async () => {
     await axios.get(`${API_URL}/api/earthquakes/${id}`).then((result) => {
       if (result.status === 200) {
-        console.log(result.data.sismo);
         setSismo(result.data.sismo);
       }
     });
@@ -42,19 +39,20 @@ const DetalleSismo = (props) => {
     <>
       <IonHeader>
         <IonToolbar color="dark" className="py-2">
-          <IonTitle>{id}</IonTitle>
+          <IonTitle>Información del sismo</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent className="my-2 mb-5">
         {sismo && (
-          <IonGrid>
-            <IonRow>
-              <IonCol>
+          <IonGrid className="container">
+            <IonRow className="row d-flex justify-content-center">
+              <IonCol className="col-10">
                 <div className="container">
+                  {/* Integración de google maps con las coordenadas del sismo detallado */}
                   <GoogleMaps
                     apiKey={"AIzaSyBl32R9o91f8vLaPXdIV1V4sCAdiX0DIcs"}
-                    style={{ height: "400px", width: "300px" }}
-                    zoom={12}
+                    style={{ height: "250px", width: "250px" }}
+                    zoom={7}
                     center={{
                       lat: parseFloat(sismo.latitud),
                       lng: parseFloat(sismo.longitud),
@@ -67,8 +65,25 @@ const DetalleSismo = (props) => {
                 </div>
               </IonCol>
             </IonRow>
+            <IonRow className="my-4">
+              <IonTitle className="text-center">Detalles</IonTitle>
+            </IonRow>
             <IonRow>
-              <IonCol>{sismo.referencia_geografica}</IonCol>
+              <IonCol className="mb-5 mt-2">
+                {/* Tabla que muestra la información detallada del sismo */}
+                <table className="table table-striped table-hover">
+                  <tbody>
+                    {Object.keys(sismo).map((dato, index) => (
+                      <tr key={index} className="my-1">
+                        <td className="text-capitalize">
+                          {dato.replace(/_/g, " ")}
+                        </td>
+                        <td>{sismo[`${dato}`]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </IonCol>
             </IonRow>
           </IonGrid>
         )}
