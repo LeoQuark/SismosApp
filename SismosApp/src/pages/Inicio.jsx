@@ -18,13 +18,13 @@ const Inicio = () => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="dark" className="py-2">
-          <IonTitle>Inicio</IonTitle>
+        <IonToolbar class="backgroundtabs" className="py-2">
+          <IonTitle color="uwu">Inicio</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent color="light">
+      <IonContent class="background">
         <div className="py-4">
-          <IonCard className="py-2">
+          <IonCard className="py-2" class="backgroundcards">
             <IonCardHeader>
               <IonCardSubtitle className="text-center">
                 Sismos App
@@ -32,7 +32,7 @@ const Inicio = () => {
               <IonCardTitle className="text-center">Bienvenidos</IonCardTitle>
               <hr className="mx-4" />
             </IonCardHeader>
-            <IonCardContent>
+            <IonCardContent class ="cardtext">
               <p style={{ textAlign: "justify" }}>
                 Desarrollamos esta pequeña aplicación con el fin de mostrar la
                 información detallada de los sismos registrados en la página

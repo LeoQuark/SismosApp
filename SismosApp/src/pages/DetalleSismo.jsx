@@ -39,13 +39,13 @@ const DetalleSismo = (props) => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="dark" className="py-2">
+        <IonToolbar className="py-2 backgroundtabs">
           <IonTitle>Información del sismo</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="my-2 mb-5">
+      <IonContent className="my-2 mb-5 background">
         {sismo && (
-          <IonGrid className="container">
+          <IonGrid className="container backgroundcards">
             <IonRow className="row d-flex justify-content-center">
               <IonCol className="col-10">
                 <div className="container">

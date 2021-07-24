@@ -65,14 +65,14 @@ const Auth = () => {
   return (
     <IonApp>
       <IonHeader>
-        <IonToolbar color="dark" className="py-3 text-center">
+        <IonToolbar class="backgroundtabs" className="py-3 text-center">
           <IonTitle>Iniciar Sesión</IonTitle>
         </IonToolbar>
       </IonHeader>
       
-      <IonContent>
+      <IonContent class="background">
         <IonGrid>
-          <IonCard className="align-center">
+          <IonCard className="mt-5" class="backgroundcards">
           <IonCardHeader>
 
               <IonCardTitle className="text-center">
@@ -80,8 +80,13 @@ const Auth = () => {
               </IonCardTitle>
               <hr className="mx-4" />
           </IonCardHeader>
-
+          <div className= "mx-5">
+            <ion-img src="https://media.discordapp.net/attachments/839320527126790175/868540602113986600/pngegg.png"> </ion-img>
+          </div>
+          <ion-card-content>
           <IonRow className="ion-text-center">
+            <ionCol>
+            </ionCol>
               <IonCol>
                 <IonButton color="danger" onClick={() => loginAuth()}>
                   <IonIcon icon={logoGoogle}></IonIcon>
@@ -91,7 +96,7 @@ const Auth = () => {
                 </IonButton>
               </IonCol>
           </IonRow>
-
+          </ion-card-content>
           </IonCard>
         </IonGrid>
       </IonContent>

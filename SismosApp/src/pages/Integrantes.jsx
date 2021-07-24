@@ -18,18 +18,18 @@ import { planetOutline } from "ionicons/icons";
 //Componente que muestra la seccion de integrantes
 const Integrantes = () => {
   //Nombres de los integrantes del equipo
-  const nombres = ["Esteban Moyano", "Leonardo Peña", "Javier Saavedra"];
+  const nombres = ["Esteban Moyano Pérez", "Leonardo Peña Fuentes", "Javier Saavedra Zaravia"];
 
   return (
     <>
       <IonHeader>
-        <IonToolbar color="dark" className="py-2">
+        <IonToolbar class="backgroundtabs" className="py-2">
           <IonTitle>Integrantes</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent color="light">
+      <IonContent class="background">
         <div className="py-2">
-          <IonCard className="py-2">
+          <IonCard className="py-2" class="backgroundcards">
             <IonCardHeader>
               <IonCardSubtitle className="text-center">
                 Sismos App
@@ -49,11 +49,11 @@ const Integrantes = () => {
               <p className="mb-4">
                 Estas personas conforman nuestro equipo de trabajo
               </p>
-              <div className="d-flex justify-content-center">
-                <IonList>
+              <div className="d-flex justify-content-center" > 
+                <IonList >
                   {/* Recorro la lista de los nombres y se pintan en una lista */}
                   {nombres.map((nombre, index) => (
-                    <IonItem key={index}>
+                    <IonItem key={index} class="background" >
                       <IonIcon icon={planetOutline}></IonIcon>
                       <IonLabel className="my-2 mx-4">{`${nombre}`}</IonLabel>
                     </IonItem>

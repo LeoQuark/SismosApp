@@ -2,15 +2,27 @@
 http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
+.background{
+  --background: #e0d6c3;
+}
+.backgroundtabs{
+  --background: #563a3D;
+  --ion-text-color: #e0d6c3;
+}
+.cardtext{
+  --ion-text-color: #e0d6c3;
+}
+.backgroundcards{
+  --background : #b4977b67;
+}
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #e0d6c3;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
   --ion-color-primary-tint: #4c8dff;
-
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
   --ion-color-secondary-rgb: 61, 194, 255;
@@ -79,11 +91,12 @@ http://ionicframework.com/docs/theming/ */
 }
 
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   /*
    * Dark Colors
    * -------------------------------------------
    */
+
 
   body {
     --ion-color-primary: #428cff;
@@ -236,4 +249,5 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-card-background: #1e1e1e;
   }
+  
 }

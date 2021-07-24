@@ -40,16 +40,16 @@ const Sismos = () => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="dark" className="py-2">
+        <IonToolbar className="py-2 backgroundtabs">
           <IonTitle>Sismos</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <IonList>
+      <IonContent class="background">
+        <IonList class="backgroundcards">
           {/* Se recorren todos los sismos y se muestran en pantalla */}
           {sismos
             ? sismos.map((sismo, index) => (
-                <IonItem key={index} href={`/home/sismo/${sismo.id_sismo}`}>
+                <IonItem class="background" key={index} href={`/home/sismos/${sismo.id_sismo}`}>
                   <IonLabel className="my-4">
                     {sismo.referencia_geografica}
                   </IonLabel>
