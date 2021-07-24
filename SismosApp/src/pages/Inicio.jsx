@@ -1,3 +1,4 @@
+//Componentes de ionic-react
 import {
   IonHeader,
   IonToolbar,
