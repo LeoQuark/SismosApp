@@ -1,0 +1,12 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "SismosApp",
+	"webDir": "build",
+	"bundledWebRuntime": false,
+	"server": {
+		"androidScheme": "http",
+		"allowNavigation": [
+			"api.jkd.cl"
+		]
+	}
+}

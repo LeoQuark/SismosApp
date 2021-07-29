@@ -11,8 +11,10 @@ import {
   IonLabel,
 } from "@ionic/react";
 
+import {HTTP, HTTPS} from "@ionic-native/http"
+
 //url base de la API REST de sismos
-const API_URL = "http://localhost:4000";
+const API_URL = "http://api.jkd.cl:18086/grupo-m";
 
 //Componente que muestra una lista de los ultimos sismos registrados por la API
 const Sismos = () => {
@@ -21,7 +23,10 @@ const Sismos = () => {
 
   //Funcion que realiza la peticion a la api y retorna los datos de los ultimos sismos
   const getSismos = async () => {
-    await axios.get(`${API_URL}/api/earthquakes`).then(
+    await axios.get(`${API_URL}/earthquakes`,{headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8'
+  }}).then(
       (result) => {
         if (result.status === 200) {
           setSismos(result.data.data);
@@ -40,22 +45,33 @@ const Sismos = () => {
   return (
     <>
       <IonHeader>
-        <IonToolbar className="py-2 backgroundtabs">
+        <IonToolbar className="backgroundtabs">
           <IonTitle>Sismos</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent class="background">
-        <IonList class="backgroundcards">
+      <IonContent className="background">
+        <IonList className="backgroundcards p-0">
           {/* Se recorren todos los sismos y se muestran en pantalla */}
-          {sismos
-            ? sismos.map((sismo, index) => (
-                <IonItem class="background" key={index} href={`/home/sismos/${sismo.id_sismo}`}>
-                  <IonLabel className="my-4">
+          {sismos ? (
+            sismos.map((sismo, index) => (
+              <IonItem
+                className="background"
+                key={index}
+                href={`/home/sismo/${sismo.id_sismo}`}
+              >
+                <div className="my-2">
+                  <IonLabel style={{ fontSize: "18px" }}>
                     {sismo.referencia_geografica}
                   </IonLabel>
-                </IonItem>
-              ))
-            : "no"}
+                  <IonLabel className="text-muted" style={{ fontSize: "14px" }}>
+                    {sismo.fecha_local}
+                  </IonLabel>
+                </div>
+              </IonItem>
+            ))
+          ) : (
+            <div>No existen sismos registrados</div>
+          )}
         </IonList>
       </IonContent>
     </>

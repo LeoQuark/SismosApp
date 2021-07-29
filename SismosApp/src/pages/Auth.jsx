@@ -21,87 +21,91 @@ import {
 
 import UserContext from "../components/context/UserContext";
 import { logoGoogle } from "ionicons/icons";
+import { GooglePlus } from "@ionic-native/google-plus";
+import { isPlatform } from "@ionic/core";
 
 const Auth = () => {
-  const { setUser } = useContext(UserContext);
   const history = useHistory();
-
   const loginAuth = async () => {
+    //Inicializamos firebase
     initFirebase();
-    // const history = useHistory ();
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({
       hd: "utem.cl",
     });
-
-    await firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        /** @type {firebase.auth.OAuthCredential} */
-        const credential = result.credential;
-
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // ...
-        console.log(user.displayName, user.email);
-        setUser(user);
-        // history.push("/home");
-        history.push("/home");
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
+    console.log(isPlatform("android"));
+    //verificamos el tipo de dispositivo
+    if (isPlatform("android")) {
+      console.log("si");
+      const res = await GooglePlus.login({
+        webClientId:
+          "560467081090-95manltmr0s3vc86dadf2gc2eidc7tps.apps.googleusercontent.com",
+        offline: true,
       });
-  };
-  return (
-    <IonApp>
-      <IonHeader>
-        <IonToolbar class="backgroundtabs" className="py-3 text-center">
-          <IonTitle>Iniciar Sesión</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      
-      <IonContent class="background">
-        <IonGrid>
-          <IonCard className="mt-5" class="backgroundcards">
-          <IonCardHeader>
+      await firebase
+        .auth()
+        .signInWithCredential(provider.credential(res.idToken))
+        .then((result) => {
+          console.log(result.user);
+          history.push("/home");
+        }, (error) =>{
+        }
+        );
+    } else {
+      await firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+          /** @type {firebase.auth.OAuthCredential} */
+          const credential = result.credential;
+          const token = credential.accessToken;
+          const user = result.user;
+          console.log(token);
+          history.push("/home");
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          var email = error.email;
+          var credential = error.credential;
+        });
+  }
+};
+return (
+  <IonApp>
+    <IonHeader>
+      <IonToolbar class="backgroundtabs" className="py-3 text-center">
+        <IonTitle>Iniciar Sesión</IonTitle>
+      </IonToolbar>
+    </IonHeader>
 
-              <IonCardTitle className="text-center">
-                Bienvenido
-              </IonCardTitle>
-              <hr className="mx-4" />
+    <IonContent class="background">
+      <IonGrid>
+        <IonCard className="mt-5" class="backgroundcards">
+          <IonCardHeader>
+            <IonCardTitle className="text-center">
+              <h1 className="display-5">Bienvenido</h1>
+            </IonCardTitle>
+            <hr className="mx-4" />
           </IonCardHeader>
-          <div className= "mx-5">
+          <div className="mx-5">
             <ion-img src="https://media.discordapp.net/attachments/839320527126790175/868540602113986600/pngegg.png"> </ion-img>
           </div>
           <ion-card-content>
-          <IonRow className="ion-text-center">
-            <ionCol>
-            </ionCol>
-              <IonCol>
+            <div className="container my-4">
+              <div className="row d-flex justify-content-center">
                 <IonButton color="danger" onClick={() => loginAuth()}>
-                  <IonIcon icon={logoGoogle}></IonIcon>
-                    Iniciar sesión con Google
-
-
+                  <IonIcon icon={logoGoogle} className="mx-2"></IonIcon>
+                  Iniciar sesión con Google
                 </IonButton>
-              </IonCol>
-          </IonRow>
+              </div>
+            </div>
           </ion-card-content>
-          </IonCard>
-        </IonGrid>
-      </IonContent>
-    </IonApp>
-  );
+        </IonCard>
+      </IonGrid>
+    </IonContent>
+  </IonApp>
+);
 };
 
 
